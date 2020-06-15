@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link href="assets/lib/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <script src="assets/lib/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container h-80">
+            <div class="row align-items-center h-100">
+                <div class="col-3 mx-auto">
+                    <div class="text-center">
+                        <img id="logo" class="rounded-circle profile-img-card" src="assets/img/logo.png" />
+                        <div  class="form-group">
+                            <input type="username" name="username" id="inputUsername" class="form-control form-group" placeholder="usuario" required autofocus>
+                            <input type="password" name="password" id="inputPassword" class="form-control form-group" placeholder="senha" required autofocus>
+                            <button class="btn btn-lg btn-primary btn-block" onclick="enter()">entrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        function enter() {
+            window.location = 'dashboard.html'
+        }
+    </script>
+    </body>
+</html>
