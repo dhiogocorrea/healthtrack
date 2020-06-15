@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Pesos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/lib/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4 pt-5">
+                <h1><a href="index.html" class="logo">HT.</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Perfil</a>
+                    </li>
+                    <li>
+                        <a href="#trackingSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Tracking Físico</a>
+                        <ul class="collapse list-unstyled" id="trackingSubmenu">
+                            <li class="active">
+                                <a href="weight.html">Peso</a>
+                            </li>
+                            <li>
+                                <a href="height.html">Altura</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="physical_activities.html">Atividades Físicas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-success" onclick="openModal()"><i class="fa fa-plus"></i></a> Histórico de Pesos
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Peso(kg)</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Adicionar Peso</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" id="newDate" placeholder="Data">
+              <input type="number" id="newWeight" placeholder="Peso (kg)">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="addNewItem()">Adicionar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="assets/lib/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/lib/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        var values = [
+            {
+                'date': '06/01/2020',
+                'weight': '70'
+            },
+            {
+                'date': '10/01/2020',
+                'weight': '68'
+            },
+            {
+                'date': '20/01/2020',
+                'weight': '66'
+            }
+        ]
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            for(var i=0; i<values.length;i++) {
+                addToTable(values[i].date, values[i].weight)
+            }
+        });
+    </script>
+    <script>
+        function addToTable(date, weight) {
+            var actions = `<a class="btn btn-default"><i class="fa fa-pencil"></i></a><a class="btn btn-default"><i class="fa fa-trash"></i></a>`
+            $("#table-body").append(`<tr><td>${date}</td><td>${weight}</td><td>${actions}</td></tr>`)
+        }
+        function openModal() {
+            $(".modal").modal('show');
+        }
+        function addNewItem() {
+            addToTable($("#newDate").val(), $("#newWeight").val())
+            $(".modal").modal('hide');
+        }
+    </script>
+</body>
+</html>
